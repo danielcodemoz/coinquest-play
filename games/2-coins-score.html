@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Level 2: Coins &amp; Score · Coin Quest Play</title>
+<meta name="description" content="Collect every coin and watch your score grow. A Coin Quest mini-game for the Willow Coding Club.">
+<meta name="theme-color" content="#0f172a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23fbbf24' stroke='%23b45309' stroke-width='3'/%3E%3Ctext x='16' y='22' font-size='16' font-weight='bold' text-anchor='middle' fill='%23b45309'%3EC%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="bar">
+  <a class="back" href="../index.html">&larr; All levels</a>
+  <h1>Level 2 &middot; Coins &amp; Score</h1>
+  <button id="mute" class="btn ghost small" type="button" aria-pressed="false">Sound: On</button>
+  <button id="restart" class="btn small" type="button">Restart</button>
+</header>
+<main class="layout">
+  <section class="stage" aria-label="Game">
+    <div class="canvas-wrap"><canvas id="game" width="480" height="272" role="img" aria-label="Coin Quest level 2: Collect every coin and watch your score grow."></canvas></div>
+    <p class="hint">← → or A D to move · Space, ↑ or W to jump · R to restart</p>
+    <div class="touch" aria-label="Touch controls">
+      <div class="pad"><button class="tbtn" type="button" data-act="left" aria-label="Move left">&larr;</button><button class="tbtn" type="button" data-act="right" aria-label="Move right">&rarr;</button></div>
+      <button class="tbtn jump" type="button" data-act="jump" aria-label="Jump">JUMP</button>
+    </div>
+    <div id="live" class="live" aria-hidden="true"></div>
+    <p id="status" class="sr-only" role="status" aria-live="polite"></p>
+  </section>
+  <aside class="learn" aria-labelledby="learn-h">
+    <h2 id="learn-h">What you are learning</h2>
+    <p>A <b>variable</b> is a named box that remembers a value. Here <b>Score</b> goes up by 10 every time a coin is collected.</p>
+<h3>Events</h3><ul class="events">
+<li class="event" data-ev="touch"><span class="chip c">Condition</span>Player collides with Coin<br><span class="chip a">Action</span>Delete Coin &middot; Play coin sound</li>
+<li class="event" data-ev="score"><span class="chip c">Condition</span>Same event, next action<br><span class="chip a">Action</span>Add 10 to variable <span class="chip v">Score</span></li>
+<li class="event" data-ev="win"><span class="chip c">Condition</span>Number of Coin objects = 0<br><span class="chip a">Action</span>Show the win message</li></ul>
+<h3>Variables</h3><p><b>Score</b> is a number you change with the action &ldquo;Add to a variable&rdquo;. <b>coinsLeft</b> is the <i>object count</i> of Coin &mdash; GDevelop can count objects for you.</p>
+<h3>Your turn in GDevelop</h3><ul>
+<li>Create a scene variable <b>Score</b> = 0.</li>
+<li>Add a Coin sprite and copy it around the level.</li>
+<li>Event: Player collides with Coin &rarr; Delete Coin, add 10 to Score, play a sound.</li>
+<li>Show it with a Text object: <code>"Score: " + ToString(Variable(Score))</code></li>
+<li>Bonus: give golden coins an object variable <b>value</b> = 50.</li></ul>
+  </aside>
+</main>
+<script src="../js/logic.js"></script>
+<script src="../js/levels.js"></script>
+<script src="../js/engine.js"></script>
+<script src="../js/world.js"></script>
+<script src="../js/game2.js"></script>
+</body>
+</html>

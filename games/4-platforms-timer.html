@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Level 4: Moving Platforms &amp; Timer · Coin Quest Play</title>
+<meta name="description" content="Ride the platforms before time runs out. A Coin Quest mini-game for the Willow Coding Club.">
+<meta name="theme-color" content="#0f172a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23fbbf24' stroke='%23b45309' stroke-width='3'/%3E%3Ctext x='16' y='22' font-size='16' font-weight='bold' text-anchor='middle' fill='%23b45309'%3EC%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="bar">
+  <a class="back" href="../index.html">&larr; All levels</a>
+  <h1>Level 4 &middot; Moving Platforms &amp; Timer</h1>
+  <button id="mute" class="btn ghost small" type="button" aria-pressed="false">Sound: On</button>
+  <button id="restart" class="btn small" type="button">Restart</button>
+</header>
+<main class="layout">
+  <section class="stage" aria-label="Game">
+    <div class="canvas-wrap"><canvas id="game" width="480" height="272" role="img" aria-label="Coin Quest level 4: Ride the platforms before time runs out."></canvas></div>
+    <p class="hint">← → or A D to move · Space, ↑ or W to jump · R to restart · Falling costs 5 seconds</p>
+    <div class="touch" aria-label="Touch controls">
+      <div class="pad"><button class="tbtn" type="button" data-act="left" aria-label="Move left">&larr;</button><button class="tbtn" type="button" data-act="right" aria-label="Move right">&rarr;</button></div>
+      <button class="tbtn jump" type="button" data-act="jump" aria-label="Jump">JUMP</button>
+    </div>
+    <div id="live" class="live" aria-hidden="true"></div>
+    <p id="status" class="sr-only" role="status" aria-live="polite"></p>
+  </section>
+  <aside class="learn" aria-labelledby="learn-h">
+    <h2 id="learn-h">What you are learning</h2>
+    <p>Platforms can <b>move by themselves</b> and carry the player. A <b>timer</b> counts time, and a <b>variable</b> can be shown on screen as a countdown.</p>
+<h3>Events</h3><ul class="events">
+<li class="event" data-ev="timer"><span class="chip c">Condition</span>At every frame (while playing)<br><span class="chip a">Action</span>Time left = 50 &minus; value of scene timer &ldquo;level&rdquo;</li>
+<li class="event" data-ev="ride"><span class="chip c">Condition</span>Player stands on a moving Platform<br><span class="chip a">Action</span>The player is carried along automatically</li>
+<li class="event" data-ev="fall"><span class="chip c">Condition</span>Player Y &gt; bottom of the screen<br><span class="chip a">Action</span>Move player to last safe ground &middot; add 5 s to the timer</li>
+<li class="event" data-ev="timeup"><span class="chip c">Condition</span>Time left &le; 0<br><span class="chip a">Action</span>Change scene to Game Over</li></ul>
+<h3>Variables</h3><p><b>TimeLeft</b> is calculated from a scene timer. <b>platformX</b> shows where the first platform is: it goes back and forth between two points.</p>
+<h3>Your turn in GDevelop</h3><ul>
+<li>Add a plank sprite with the <b>Platform</b> behavior.</li>
+<li>Move it with a <b>Tween</b> behavior (loop back and forth) or with events.</li>
+<li>Action &ldquo;Start (or reset) a scene timer&rdquo;; read it with <code>TimerElapsedTime("level")</code>.</li>
+<li>Show the countdown with a Text object.</li></ul>
+  </aside>
+</main>
+<script src="../js/logic.js"></script>
+<script src="../js/levels.js"></script>
+<script src="../js/engine.js"></script>
+<script src="../js/world.js"></script>
+<script src="../js/game4.js"></script>
+</body>
+</html>

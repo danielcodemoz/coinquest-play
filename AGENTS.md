@@ -31,3 +31,11 @@ O Daniel autoriza-te a construir e **publicar** este site do início ao fim, sem
 ## Reportar no fim
 Link do site, último commit publicado (`git rev-parse --short HEAD` em main), URL do PR, páginas/secções,
 o que verificaste (saída do curl) e o que ficou por fazer.
+
+## Handoff — Coin Quest Play (estado actual)
+- Site estático (sem build) com 5 mini-jogos canvas: `games/1..5-*.html`, home em `index.html`. Subdomínio `coinquest-play` (não mudar).
+- Código: `js/logic.js` (lógica pura, testável) · `js/levels.js` (níveis em texto) · `js/engine.js` (loop 60 Hz, teclado/toque, WebAudio, arte em código) · `js/world.js` (mundo partilhado) · `js/game1..5.js` (regras de cada nível) · `js/home.js`.
+- Testes: `npm test` (corre `node test/logic.test.js`, sem dependências).
+- Painel "What you are learning" (inglês) está em cada `games/*.html`; progresso (estrelas) só em `localStorage`.
+- Ramo `claude/coinquest-minigames`, PR aberto para `main`; **não fazer merge** — o Daniel revê (merge em `main` publica o site). Ramos `claude/...` não accionam o auto-merge `codex/...`.
+- Por fazer / ideias: confirmar em telemóveis reais (toque e áudio), mais níveis, ligar aos links das lições GDevelop.
