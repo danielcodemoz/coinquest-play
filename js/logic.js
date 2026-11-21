@@ -215,7 +215,17 @@
     return 1 + (total > 0 && coins >= total ? 1 : 0) + (lives >= maxLives ? 1 : 0);
   }
 
+  // Game keys (arrows, Space, Enter, R, M...) must not be stolen from form controls:
+  // when a button, slider, link or text field has focus, the browser keeps those keys.
+  var CONTROL_TAGS = { INPUT: 1, SELECT: 1, TEXTAREA: 1, BUTTON: 1, A: 1, SUMMARY: 1 };
+  function gameKeyAllowed(el) {
+    if (!el) return true;
+    if (el.isContentEditable) return false;
+    return !CONTROL_TAGS[String(el.tagName || '').toUpperCase()];
+  }
+
   return {
+    gameKeyAllowed: gameKeyAllowed,
     TILE: TILE, clamp: clamp, approach: approach, overlaps: overlaps, triangle: triangle,
     platformPos: platformPos, validateLevel: validateLevel, parseLevel: parseLevel,
     defaultPhysics: defaultPhysics, createPlayer: createPlayer, stepBody: stepBody,

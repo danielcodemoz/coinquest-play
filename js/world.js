@@ -84,6 +84,9 @@
         }
       }
 
+      // Order of events matters: if a hook above ended the game (last life lost), the flag
+      // in the same frame does not count. One outcome only: game over wins the tie.
+      if (world.frozen) return;
       if (lv.flag && !world.won && L.overlaps(p, lv.flag, 0)) { world.won = true; if (hooks.flag) hooks.flag(); }
 
       if (p.y > lv.height + 40) {

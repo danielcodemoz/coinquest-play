@@ -12,6 +12,7 @@
       jump: function () { jumps++; jumpFlash = 0.25; CQ.audio.jump(); },
       land: function () { CQ.audio.land(); },
       flag: function () {
+        if (done) return;
         done = true; world.frozen = true; CQ.audio.win(); CQ.progress.complete('1', 3);
         document.getElementById('status').textContent = 'Level complete!';
       }

@@ -18,6 +18,7 @@
         state.timeLeft = Math.max(0, state.timeLeft - PENALTY); penaltyFlash = 1; ev.fall = 0.5; CQ.audio.hurt();
       },
       flag: function () {
+        if (done) return;
         done = true; result = 'win'; world.frozen = true;
         state.bonus = L.timeBonus(state.timeLeft); L.addScore(state, state.bonus);
         CQ.audio.win();

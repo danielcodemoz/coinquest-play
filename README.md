@@ -10,6 +10,9 @@ Live site: https://coinquest-play.danielpro.dev
 | Jump | Space, Up arrow or W (hold = higher) | JUMP button |
 | Restart | R or the Restart button | Restart button, or tap the game when a level ends |
 | Sound | M or the Sound button | Sound button |
+| Theme | Light / Dark button (follows your device, remembers your choice) | same |
+
+Keys only control the game while the game screen is selected. If you click Restart, Sound or a slider, those keep Space / Enter / arrows for themselves; click the game screen to play again.
 
 ## The levels
 1. **Move & Jump** - reach the flag. Drag the sliders to change gravity and jump speed.
@@ -22,8 +25,8 @@ Next to every game, **What you are learning** shows the GDevelop events (conditi
 
 ## For teachers / developers
 - Static site: open `index.html` or run `python3 -m http.server` and visit http://localhost:8000. No build step, no external assets.
-- Tests for the game logic: `npm test` (needs only Node).
-- Code map: `js/logic.js` (pure logic), `js/levels.js` (levels as text), `js/engine.js` (loop, input, sound, art), `js/world.js` (shared world), `js/game1..5.js` (rules per level).
+- Tests: `npm test` (needs only Node): game logic and physics, keyboard handling, and the one-outcome rule for game over vs flag.
+- Code map: `js/logic.js` (pure logic), `js/levels.js` (levels as text), `js/engine.js` (loop, input, sound, art), `js/world.js` (shared world), `js/game1..5.js` (rules per level), `js/ui.js` (theme toggle and the Controls card).
 - Progress (stars) is stored only in the browser's localStorage. No accounts, no tracking.
 
 ---

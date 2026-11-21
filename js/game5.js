@@ -37,7 +37,7 @@
         if (L.loseLife(state, 1.5)) { CQ.audio.hurt(); if (state.over) finish('lose'); }
         state.timeLeft = Math.max(0, state.timeLeft - 3);
       },
-      flag: function () { state.bonus = L.timeBonus(state.timeLeft); L.addScore(state, state.bonus); finish('win'); }
+      flag: function () { if (scene !== 'play') return; state.bonus = L.timeBonus(state.timeLeft); L.addScore(state, state.bonus); finish('win'); }
     } });
     state.totalCoins = world.coins.length;
     scene = 'play'; ev.go = 0.6;

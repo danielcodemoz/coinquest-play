@@ -4,6 +4,6 @@
   "private": true,
   "description": "Coin Quest Play: mini-games for the Willow Coding Club (static site, no build step).",
   "scripts": {
-    "test": "node test/logic.test.js"
+    "test": "node test/logic.test.js && node test/engine.test.js"
   }
 }
