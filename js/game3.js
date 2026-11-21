@@ -29,6 +29,7 @@
         if (L.loseLife(state, 1.5)) { ev.hurt = 0.4; CQ.audio.hurt(); lose(); }
       },
       flag: function () {
+        if (done) return;
         done = true; result = 'win'; world.frozen = true; CQ.audio.win();
         CQ.progress.complete('3', L.starRating(state.coins, state.totalCoins, state.lives, state.maxLives));
         document.getElementById('status').textContent = 'Level complete!';

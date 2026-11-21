@@ -28,6 +28,14 @@
     }
   }
 
+  // overall progress
+  var total = 0;
+  for (var j = 1; j <= 5; j++) if (done[j]) total++;
+  var pt = document.getElementById('prog-text'), pf = document.getElementById('prog-fill'), pb = document.getElementById('prog');
+  if (pt) pt.textContent = total + ' of 5 levels done' + (total === 5 ? ' - well played!' : '');
+  if (pf) pf.style.width = (total * 20) + '%';
+  if (pb) pb.setAttribute('aria-valuenow', total);
+
   // banner
   var b = document.getElementById('banner');
   if (b) {

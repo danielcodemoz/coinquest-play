@@ -51,8 +51,11 @@
 
   function wireKeys() {
   window.addEventListener('keydown', function (e) {
-    CQ.audio.unlock();
     if (e.ctrlKey || e.metaKey || e.altKey) return;
+    // Only the game itself (canvas / page background) gets the game keys.
+    // Buttons, sliders and links keep Space/Enter/arrows for keyboard users.
+    if (!window.CQLogic.gameKeyAllowed(e.target)) return;
+    CQ.audio.unlock();
     var a = KEYMAP[e.code];
     if (a) {
       e.preventDefault();
@@ -386,6 +389,10 @@
     var ctx = canvas.getContext('2d');
     ctx.imageSmoothingEnabled = false;
     wireKeys(); wireTouch();
+    // A focusable canvas: it receives the game keys. Clicking or tapping it gives it focus.
+    function focusGame() { try { canvas.focus({ preventScroll: true }); } catch (x) { /* ignore */ } }
+    canvas.addEventListener('pointerdown', focusGame);
+    focusGame();
 
     function restart() {
       CQ.input.clear(); evState = {};
@@ -394,7 +401,7 @@
       var status = document.getElementById('status'); if (status) status.textContent = 'Game restarted';
     }
     var rb = document.getElementById('restart');
-    if (rb) rb.addEventListener('click', function () { restart(); rb.blur(); });
+    if (rb) rb.addEventListener('click', function (e) { restart(); if (e.detail > 0) focusGame(); });
     CQ.onKey('KeyR', restart);
 
     var mb = document.getElementById('mute');
@@ -410,7 +417,7 @@
       paintMute(); if (game.onMute) game.onMute();
     }
     CQ.toggleMute = toggleMute;
-    if (mb) mb.addEventListener('click', function () { toggleMute(); mb.blur(); });
+    if (mb) mb.addEventListener('click', function (e) { toggleMute(); if (e.detail > 0) focusGame(); });
     CQ.onKey('KeyM', toggleMute);
     paintMute();
 
